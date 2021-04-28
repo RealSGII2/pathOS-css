@@ -1,0 +1,126 @@
+@import url("https://cdn.realsgii2.dev/soma-ui/fonts/sansation.css");
+
+// Button values
+$button-normal: url("https://cdn.realsgii2.dev/soma-ui/button/button-default.png");
+$button-hover: url("https://cdn.realsgii2.dev/soma-ui/button/button-hover.png");
+$button-active: url("https://cdn.realsgii2.dev/soma-ui/button/button-active.png");
+
+$window: url("https://cdn.realsgii2.dev/soma-ui/window3.png");
+
+@mixin pseudo-cover {
+	display: block;
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	font-family: "Sansation", arial;
+	box-sizing: border-box;
+
+	background-color: #27343a;
+	color: #80b4b5;
+	fonts-size: 130%;
+
+	width: 100vw;
+	height: 100vh;
+
+	filter: blur(0.75px);
+
+	margin: 0;
+	padding: 0;
+
+	&::before {
+		@include pseudo-cover;
+		pointer-events: none;
+
+		background-image: url("https://cdn.realsgii2.dev/soma-ui/background/station.png");
+		background-size: 80%;
+		background-repeat: no-repeat;
+		// background-position: center center;
+		opacity: 0.15;
+	}
+
+	&::after {
+		@include pseudo-cover;
+		pointer-events: none;
+
+		background-image: url("https://cdn.realsgii2.dev/soma-ui/scanline.png");
+		opacity: 0.2;
+		z-index: 999;
+	}
+}
+
+*,
+*::before,
+*::after {
+	font-family: inherit;
+	box-sizing: inherit;
+}
+
+@mixin content {
+	padding: 1.5rem;
+}
+
+@mixin button {
+	outline: 0;
+
+	background-color: transparent;
+	position: relative;
+
+	span {
+		display: block;
+		margin-right: 4px;
+	}
+
+	color: #fff;
+	font-weight: 700;
+	font-size: 16px;
+	border: solid 12px;
+
+	border-image: $button-normal;
+	border-image-slice: 20 50 45 50 fill !important;
+	border-image-repeat: stretch !important;
+
+	&:hover {
+		border-image: $button-hover;
+	}
+
+	&:active {
+		border-image: $button-active;
+	}
+}
+
+@mixin window {
+	padding: 10px;
+	font-size: 16px;
+	border: solid 24px;
+
+	border-image: $window;
+	border-image-slice: 30 30 35 45 fill !important;
+	border-image-repeat: stretch !important;
+}
+
+@mixin windowTitle {
+	background-color: #80b4b5;
+	color: #ffffff;
+	width: fit-content;
+	padding: 4px 8px;
+	font-size: 18px;
+	font-weight: 700;
+	position: relative;
+
+	top: -34px;
+	left: -34px;
+}
+
+.hidden {
+	display: none;
+}
+
+.space {
+	height: 1rem;
+}
